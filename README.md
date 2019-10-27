@@ -1,2 +1,3 @@
-# soccer-teams
-Application for soccer team control
+# Soccer Teams
+
+Application for soccer team control.

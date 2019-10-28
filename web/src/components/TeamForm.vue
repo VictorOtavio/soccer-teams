@@ -1,5 +1,7 @@
 <template>
   <form>
+    <h2 class="title is-3">Cadastrar Time de Futebol</h2>
+
     <b-field label="Nome">
       <b-input placeholder="Nome do time" />
     </b-field>

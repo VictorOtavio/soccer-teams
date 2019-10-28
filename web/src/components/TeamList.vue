@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-multiline">
     <template v-if="teams.length > 0">
-      <div v-for="(team, i) in teams" :key="i" class="column is-3">
+      <div v-for="(team, i) in teams" :key="i" class="column is-4">
         <team-item :data="team" />
       </div>
     </template>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import TeamItem from "@/components/TeamItem.vue";
 
 export default {
@@ -23,20 +22,13 @@ export default {
     TeamItem
   },
 
-  data() {
-    return {
-      teams: []
-    };
-  },
-
   mounted() {
-    this.fetchTeams();
+    this.$store.dispatch("getTeams");
   },
 
-  methods: {
-    async fetchTeams() {
-      const teams = await axios.get("http://127.0.0.1:8000/teams");
-      this.teams = teams.data;
+  computed: {
+    teams() {
+      return this.$store.getters.fetchTeams;
     }
   }
 };

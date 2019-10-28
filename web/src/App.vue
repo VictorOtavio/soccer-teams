@@ -2,26 +2,29 @@
   <div id="app">
     <b-navbar type="is-dark" wrapper-class="container">
       <template slot="brand">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        <span class="navbar-item">
           Soccer Teams
-        </b-navbar-item>
-      </template>
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <div class="buttons">
-            <router-link :to="{ name: 'new-team' }" class="button is-primary">
-              <strong>Adicionar novo time</strong>
-            </router-link>
-          </div>
-        </b-navbar-item>
+        </span>
       </template>
     </b-navbar>
 
     <div class="container main-content">
-      <router-view />
+      <teams />
     </div>
   </div>
 </template>
+
+<script>
+import Teams from "@/views/Teams.vue";
+
+export default {
+  name: "App",
+
+  components: {
+    Teams
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .main-content {

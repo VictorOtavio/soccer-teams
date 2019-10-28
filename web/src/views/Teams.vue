@@ -1,22 +1,18 @@
 <template>
   <div>
     <h1 class="title is-2">Times de Futebol</h1>
-    <div class="columns">
-      <div class="column is-3">
-        <team />
-      </div>
-    </div>
+    <team-list />
   </div>
 </template>
 
 <script>
-import Team from "@/components/Team.vue";
+import TeamList from "@/components/TeamList.vue";
 
 export default {
   name: "Teams",
 
   components: {
-    Team
+    TeamList
   }
 };
 </script>

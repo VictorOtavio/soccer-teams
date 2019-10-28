@@ -9,13 +9,21 @@
       </figure>
     </div>
     <div class="card-content">
-      <h1 class="title is-3">Liverpool</h1>
+      <h1 class="title is-4">{{ data.name }}</h1>
+      <h2 class="subtitle is-5">{{ data.coach }}</h2>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Team"
+  name: "TeamItem",
+
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>

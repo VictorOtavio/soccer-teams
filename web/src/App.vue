@@ -11,6 +11,9 @@
         <router-link class="navbar-item" :to="{ name: 'teams' }">
           Clubes
         </router-link>
+        <router-link class="navbar-item" :to="{ name: 'players' }">
+          Jogadores
+        </router-link>
       </template>
     </b-navbar>
 

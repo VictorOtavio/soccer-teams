@@ -1,0 +1,50 @@
+<template>
+  <b-table :data="players" striped hoverable>
+    <template slot-scope="props">
+      <b-table-column field="name" label="Nome">
+        {{ props.row.name }}
+      </b-table-column>
+
+      <b-table-column field="team_id" label="Clube">
+        {{ props.row.team.name }}
+      </b-table-column>
+
+      <b-table-column class="has-text-right">
+        <button
+          class="button is-danger is-small"
+          @click="removeItem()"
+          title="Remover jogador"
+        >
+          <b-icon icon="times" size="is-small" />
+        </button>
+      </b-table-column>
+    </template>
+
+    <template slot="empty">
+      <div class="has-text-centered">
+        <b-icon icon="frown" size="is-medium" type="is-warning" /><br />
+        Você ainda não possui nenhum jogador cadastrado.
+      </div>
+    </template>
+  </b-table>
+</template>
+
+<script>
+export default {
+  name: "PlayerList",
+
+  mounted() {
+    this.$store.dispatch("players/getPlayers");
+  },
+
+  computed: {
+    players() {
+      return this.$store.getters["players/fetchPlayers"];
+    }
+  },
+
+  methods: {
+    removeItem() {}
+  }
+};
+</script>

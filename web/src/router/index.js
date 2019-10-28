@@ -13,6 +13,11 @@ const routes = [
     path: "/",
     name: "teams",
     component: loadView("Teams")
+  },
+  {
+    path: "/players",
+    name: "players",
+    component: loadView("Players")
   }
 ];
 

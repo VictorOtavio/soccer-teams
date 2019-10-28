@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Team;
+use App\Models\Player;
 use Illuminate\Database\Seeder;
 
-class TeamsTableSeeder extends Seeder
+class PlayersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,8 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Team::class, 3)->create();
+        factory(Player::class, 11)->create([
+            'team_id' => 1
+        ]);
     }
 }

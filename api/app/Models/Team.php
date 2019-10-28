@@ -30,4 +30,12 @@ class Team extends Model
 
         return $value;
     }
+
+    /**
+     * Get the players for the team.
+     */
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
 }

@@ -6,23 +6,23 @@
           Soccer Teams
         </span>
       </template>
+
+      <template slot="end">
+        <router-link class="navbar-item" :to="{ name: 'teams' }">
+          Clubes
+        </router-link>
+      </template>
     </b-navbar>
 
     <div class="container main-content">
-      <teams />
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import Teams from "@/views/Teams.vue";
-
 export default {
-  name: "App",
-
-  components: {
-    Teams
-  }
+  name: "App"
 };
 </script>
 

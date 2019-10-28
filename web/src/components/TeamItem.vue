@@ -38,7 +38,7 @@ export default {
   methods: {
     async removeItem(teamId) {
       try {
-        await this.$store.dispatch("destroyTeam", teamId);
+        await this.$store.dispatch("teams/destroyTeam", teamId);
 
         this.$buefy.toast.open({
           message: "Time de futebol removido com sucesso!",

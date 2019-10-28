@@ -48,7 +48,7 @@ export default {
   methods: {
     async saveData() {
       try {
-        await this.$store.dispatch("storeTeam", this.$data);
+        await this.$store.dispatch("teams/storeTeam", this.$data);
 
         // Clear data
         this.name = "";

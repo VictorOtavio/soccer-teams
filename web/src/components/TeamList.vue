@@ -23,12 +23,12 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch("getTeams");
+    this.$store.dispatch("teams/getTeams");
   },
 
   computed: {
     teams() {
-      return this.$store.getters.fetchTeams;
+      return this.$store.getters["teams/fetchTeams"];
     }
   }
 };

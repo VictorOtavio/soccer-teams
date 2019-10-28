@@ -16,12 +16,16 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setTeam: (state, team) => {
+    addTeam: (state, team) => {
       state.teams.push(team);
     },
 
     setTeams: (state, payload) => {
       state.teams = [...payload];
+    },
+
+    removeTeam: (state, teamId) => {
+      state.teams = state.teams.filter(x => x.id !== teamId);
     }
   },
   actions: {
@@ -32,7 +36,12 @@ export default new Vuex.Store({
 
     async storeTeam({ commit }, data) {
       const { data: team } = await axios.post(BASE_URL + "teams", data);
-      commit("setTeam", team);
+      commit("addTeam", team);
+    },
+
+    async destroyTeam({ commit }, teamId) {
+      await axios.delete(BASE_URL + "teams/" + teamId);
+      commit("removeTeam", teamId);
     }
   }
 });

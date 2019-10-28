@@ -9,5 +9,6 @@ $factory->define(Team::class, function (Faker $faker) {
     return [
         'name' => $faker->city,
         'coach' => $faker->firstName . ' ' . $faker->lastName,
+        'logo' => null,
     ];
 });

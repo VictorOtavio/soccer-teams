@@ -10,6 +10,18 @@
       <b-input v-model="coach" placeholder="Técnico do time" />
     </b-field>
 
+    <b-field class="file">
+      <b-upload v-model="logo" accept="image/*">
+        <a class="button is-info">
+          <b-icon icon="upload" size="is-small" />
+          <span>Logotipo do time</span>
+        </a>
+      </b-upload>
+      <span class="file-name" v-if="logo">
+        {{ logo.name }}
+      </span>
+    </b-field>
+
     <b-field grouped>
       <div class="control">
         <button class="button is-link" @click.prevent="saveData">
@@ -28,7 +40,8 @@ export default {
   data() {
     return {
       name: "",
-      coach: ""
+      coach: "",
+      logo: null
     };
   },
 
@@ -38,9 +51,9 @@ export default {
         await this.$store.dispatch("storeTeam", this.$data);
 
         // Clear data
-        Object.keys(this.$data).forEach(key => {
-          this.$data[key] = "";
-        });
+        this.name = "";
+        this.coach = "";
+        this.logo = null;
 
         this.$buefy.toast.open({
           message: "Time de futebol cadastrado com sucesso!",

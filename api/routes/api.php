@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('/teams', 'TeamController');
+Route::post('/teams/{team}/logo', 'TeamController@storeLogo');

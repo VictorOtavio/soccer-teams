@@ -3,8 +3,8 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <img
-          src="https://esportsobserver.com/wp-content/uploads/2017/02/liverpool.jpg"
-          alt="Liverpool"
+          :src="data.logo ? data.logo : '//via.placeholder.com/280x210'"
+          :alt="data.name"
         />
       </figure>
     </div>

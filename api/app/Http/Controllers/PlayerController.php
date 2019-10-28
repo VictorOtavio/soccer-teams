@@ -26,7 +26,10 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $player = Player::create($request->all());
+        $player->team;
+        
+        return response()->json($player, 201);
     }
 
     /**
@@ -48,6 +51,7 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
-        //
+        $player->delete();
+        return response()->json(null, 204);
     }
 }

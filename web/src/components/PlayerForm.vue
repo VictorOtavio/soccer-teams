@@ -3,7 +3,18 @@
     <h2 class="title is-3">Cadastrar Jogador</h2>
 
     <b-field label="Clube">
-      <b-input v-model="team_id" placeholder="Time de futebol" />
+      <b-autocomplete
+        icon="users"
+        v-model="team"
+        :data="teams"
+        field="name"
+        @select="option => (team_id = option !== null ? option.id : team_id)"
+        placeholder="Clube de futebol"
+      >
+        <template slot="empty">
+          Clibe não encontrado
+        </template>
+      </b-autocomplete>
     </b-field>
 
     <b-field label="Nome">
@@ -27,13 +38,48 @@ export default {
 
   data() {
     return {
-      team_id: null,
+      team: "",
+      team_id: "",
       name: ""
     };
   },
 
+  mounted() {
+    this.$store.dispatch("teams/getTeams");
+  },
+
+  computed: {
+    teams() {
+      const teams = this.$store.getters["teams/fetchTeams"].filter(option => {
+        return option.name.toLowerCase().indexOf(this.team.toLowerCase()) >= 0;
+      });
+
+      return teams;
+    }
+  },
+
   methods: {
-    saveData() {}
+    async saveData() {
+      try {
+        await this.$store.dispatch("players/storePlayer", this.$data);
+
+        // Clear data
+        this.team = "";
+        this.team_id = "";
+        this.name = "";
+
+        this.$buefy.toast.open({
+          message: "Jogador cadastrado com sucesso!",
+          type: "is-success"
+        });
+      } catch (error) {
+        this.$buefy.toast.open({
+          message: "Ocorreu um erro",
+          type: "is-danger"
+        });
+        console.error(error);
+      }
+    }
   }
 };
 </script>

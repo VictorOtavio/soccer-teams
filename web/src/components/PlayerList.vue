@@ -12,7 +12,7 @@
       <b-table-column class="has-text-right">
         <button
           class="button is-danger is-small"
-          @click="removeItem()"
+          @click="removeItem(props.row.id)"
           title="Remover jogador"
         >
           <b-icon icon="times" size="is-small" />
@@ -44,7 +44,22 @@ export default {
   },
 
   methods: {
-    removeItem() {}
+    async removeItem(playerId) {
+      try {
+        await this.$store.dispatch("players/destroyPlayer", playerId);
+
+        this.$buefy.toast.open({
+          message: "Jogador removido com sucesso!",
+          type: "is-success"
+        });
+      } catch (error) {
+        this.$buefy.toast.open({
+          message: "Ocorreu um erro",
+          type: "is-danger"
+        });
+        console.error(error);
+      }
+    }
   }
 };
 </script>

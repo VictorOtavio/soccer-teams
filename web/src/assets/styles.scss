@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
+
+$family-title: "Lobster", cursive;
+
+@import "~bulma";
+
+.navbar-brand .navbar-item {
+  font-family: $family-title;
+  font-size: 1.6rem;
+}

@@ -2,14 +2,23 @@ import axios from "./axios.js";
 
 export default {
   namespaced: true,
+
   state: {
     players: []
   },
+
   getters: {
     fetchPlayers(state) {
       return state.players;
+    },
+
+    fetchPlayersByTeam: state => teamId => {
+      return state.players.filter(
+        player => parseInt(player.team_id) === teamId
+      );
     }
   },
+
   mutations: {
     addPlayer: (state, player) => {
       state.players.push(player);
@@ -23,6 +32,7 @@ export default {
       state.players = state.players.filter(x => x.id !== playerId);
     }
   },
+
   actions: {
     async getPlayers({ commit }) {
       const players = await axios.get("players");

@@ -15,6 +15,11 @@ const routes = [
     component: loadView("Teams")
   },
   {
+    path: "/teams/:teamId",
+    name: "teams-details",
+    component: loadView("TeamDetails")
+  },
+  {
     path: "/players",
     name: "players",
     component: loadView("Players")

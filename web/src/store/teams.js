@@ -2,14 +2,21 @@ import axios from "./axios.js";
 
 export default {
   namespaced: true,
+
   state: {
     teams: []
   },
+
   getters: {
     fetchTeams(state) {
       return state.teams;
+    },
+
+    showTeam(state) {
+      return teamId => state.teams.find(x => x.id === teamId);
     }
   },
+
   mutations: {
     addTeam: (state, team) => {
       state.teams.push(team);
@@ -23,7 +30,13 @@ export default {
       state.teams = state.teams.filter(x => x.id !== teamId);
     }
   },
+
   actions: {
+    async getTeam({ commit }, teamId) {
+      const team = await axios.get("teams/" + teamId);
+      commit("addTeam", team.data);
+    },
+
     async getTeams({ commit }) {
       const teams = await axios.get("teams");
       commit("setTeams", teams.data);

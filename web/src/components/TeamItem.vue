@@ -9,7 +9,13 @@
       </figure>
     </div>
     <div class="card-content">
-      <h1 class="title is-4">{{ data.name }}</h1>
+      <h1 class="title is-4">
+        <router-link
+          :to="{ name: 'teams-details', params: { teamId: data.id } }"
+        >
+          {{ data.name }}
+        </router-link>
+      </h1>
       <h2 class="subtitle is-5">{{ data.coach }}</h2>
     </div>
     <footer class="card-footer">

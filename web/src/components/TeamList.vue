@@ -22,10 +22,6 @@ export default {
     TeamItem
   },
 
-  mounted() {
-    this.$store.dispatch("teams/getTeams");
-  },
-
   computed: {
     teams() {
       return this.$store.getters["teams/fetchTeams"];

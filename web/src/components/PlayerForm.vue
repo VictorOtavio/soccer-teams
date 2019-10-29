@@ -44,10 +44,6 @@ export default {
     };
   },
 
-  mounted() {
-    this.$store.dispatch("teams/getTeams");
-  },
-
   computed: {
     teams() {
       const teams = this.$store.getters["teams/fetchTeams"].filter(option => {

@@ -33,12 +33,21 @@
 export default {
   name: "PlayerList",
 
-  mounted() {
-    this.$store.dispatch("players/getPlayers");
+  props: {
+    team: {
+      type: [Number, String],
+      default: null
+    }
   },
 
   computed: {
     players() {
+      if (this.team) {
+        return this.$store.getters["players/fetchPlayersByTeam"](
+          parseInt(this.team)
+        );
+      }
+
       return this.$store.getters["players/fetchPlayers"];
     }
   },

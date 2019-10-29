@@ -2,9 +2,9 @@
   <div id="app">
     <b-navbar type="is-dark" wrapper-class="container">
       <template slot="brand">
-        <span class="navbar-item">
+        <router-link :to="{ name: 'teams' }" class="navbar-item">
           Soccer Teams
-        </span>
+        </router-link>
       </template>
 
       <template slot="end">
@@ -25,7 +25,12 @@
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+
+  mounted() {
+    this.$store.dispatch("teams/getTeams");
+    this.$store.dispatch("players/getPlayers");
+  }
 };
 </script>
 

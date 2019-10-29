@@ -11,6 +11,7 @@ build-api:
 	php ./api/artisan key:generate --ansi
 	[ -f ./api/database/database.sqlite ] || touch ./api/database/database.sqlite
 	php ./api/artisan migrate:fresh --seed
+	php ./api/artisan storage:link
 
 dependencies: dependencies-api dependencies-web
 

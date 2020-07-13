@@ -34,7 +34,7 @@ Follow the steps below and you will have a fresh install running on your machine
 
 ```bash
 # Clone the repository and enter the project folder.
-git clone https://github.com/VictorOtavio/soccer-teams.git
+git clone https://github.com/vctrtvfrrr/soccer-teams.git
 cd soccer-teams
 
 # Run the dependencies installation and package compilation
